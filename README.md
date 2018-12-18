@@ -2,14 +2,14 @@ Tasty `defn`s with `s/fdef`s baked in.
 
 ``` clojure
 (ns my-namespace
-  (:require [defnspecken :refer [defspecken]]
+  (:require specken
             [clojure.spec.alpha :as s]))
 ```
 
 ## Usage
 This:
 ``` clojure
-(defnspecken ranged-rand
+(specken/defn ranged-rand
   "Returns random int in range start <= rand < end"
   {::s/args (s/and (s/cat :start int? :end int?)
                    #(< (:start %) (:end %)))
