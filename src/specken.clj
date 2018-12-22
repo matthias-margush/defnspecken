@@ -1,5 +1,6 @@
 (ns specken
   "Defn with spec baked in."
+  (:refer-clojure :exclude [defn])
   (:require [clojure.spec.alpha :as s]
             [clojure.spec.test.alpha :as st]))
 
@@ -26,4 +27,4 @@
   s/fdef form using the ::s/args, ::s/ret, and ::s/fn meta
   attributes."
   [& f]
-  `(do (defn ~@f) ~(specken-defn* f)))
+  `(do (clojure.core/defn ~@f) ~(specken-defn* f)))
