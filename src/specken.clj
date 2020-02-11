@@ -1,8 +1,7 @@
 (ns specken
   "Defn with spec baked in."
   (:refer-clojure :exclude [defn])
-  (:require [clojure.spec.alpha :as s]
-            [clojure.spec.test.alpha :as st]))
+  (:require [clojure.spec.alpha :as s]))
 
 (defn- attr-map?
   "If a clojure form is an attribute map, returns it."
@@ -22,7 +21,7 @@
          ~@(when ret `(:ret ~ret))
          ~@(when fn `(:fn ~fn))))))
 
-(defmacro defn
+(defmacro defnspeck
   "Given a function definition, emits the original defn, along with an
   s/fdef form using the ::s/args, ::s/ret, and ::s/fn meta
   attributes."
